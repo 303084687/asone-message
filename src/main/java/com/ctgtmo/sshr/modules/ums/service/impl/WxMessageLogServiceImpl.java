@@ -26,7 +26,7 @@ public class WxMessageLogServiceImpl extends ServiceImpl<WxMessageLogMapper, WxM
   /** 
   * @Title: list 
   * @Description: 查询日志列表
-  * @param templateId 模板id
+  * @param templateName 模板名称
   * @param touser 微信openId
   * @param status 状态
   * @param pageSize 当前页码
@@ -36,14 +36,14 @@ public class WxMessageLogServiceImpl extends ServiceImpl<WxMessageLogMapper, WxM
   */
   @Override
   @Transactional(readOnly = true)
-  public Page<WxMessageLog> list(String templateId, String touser, int status, Integer pageSize, Integer pageNum) {
+  public Page<WxMessageLog> list(String templateName, String touser, int status, Integer pageSize, Integer pageNum) {
     //分页参数
     Page<WxMessageLog> page = new Page<>(pageNum, pageSize);
     QueryWrapper<WxMessageLog> wrapper = new QueryWrapper<>();
     LambdaQueryWrapper<WxMessageLog> lambda = wrapper.lambda();
     //拼接查询参数
-    if (StringUtils.isNotBlank(templateId)) {
-      lambda.eq(WxMessageLog::getTemplateId, templateId);
+    if (StringUtils.isNotBlank(templateName)) {
+      lambda.like(WxMessageLog::getTemplateName, templateName);
     }
     if (StringUtils.isNotBlank(touser)) {
       lambda.like(WxMessageLog::getTouser, touser);

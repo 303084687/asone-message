@@ -17,5 +17,5 @@ public interface WxMessageLogService extends IService<WxMessageLog> {
   /**
    * 分页查询日志
    */
-  Page<WxMessageLog> list(String templateId, String touser, int status, Integer pageSize, Integer pageNum);
+  Page<WxMessageLog> list(String templateName, String touser, int status, Integer pageSize, Integer pageNum);
 }

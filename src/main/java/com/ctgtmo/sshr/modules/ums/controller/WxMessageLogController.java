@@ -31,7 +31,7 @@ public class WxMessageLogController {
   /** 
    * @Title: list 
    * @Description: 查询日志列表
-   * @param templateId 模板id
+   * @param templateName 模板名称
    * @param touser 微信openId
    * @param status 状态 1成功2失败
    * @param pageSize 当前页码
@@ -41,10 +41,10 @@ public class WxMessageLogController {
    */
   @ResponseBody
   @RequestMapping(value = "/messageLog/list", method = RequestMethod.GET)
-  public CommonResult<CommonPage<WxMessageLog>> list(@RequestParam(value = "templateId", required = false) String templateId,
+  public CommonResult<CommonPage<WxMessageLog>> list(@RequestParam(value = "templateName", required = false) String templateName,
   @RequestParam(value = "touser", required = false) String touser, @RequestParam(value = "status", required = false) int status,
   @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-    Page<WxMessageLog> logList = logService.list(templateId, touser, status, pageSize, pageNum);
+    Page<WxMessageLog> logList = logService.list(templateName, touser, status, pageSize, pageNum);
     return CommonResult.success(CommonPage.restPage(logList));
   }
 
