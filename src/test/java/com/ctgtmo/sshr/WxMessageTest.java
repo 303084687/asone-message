@@ -16,7 +16,7 @@ import com.ctgtmo.sshr.common.api.CommonResult;
 import com.ctgtmo.sshr.common.exception.ApiException;
 import com.ctgtmo.sshr.modules.ums.model.wx.Data;
 import com.ctgtmo.sshr.modules.ums.model.wx.TemplateContent;
-import com.ctgtmo.sshr.modules.ums.service.WxChatService;
+import com.ctgtmo.sshr.modules.ums.service.MessageService;
 
 /**  
  * @Title: WxMessageTest.java   
@@ -32,7 +32,7 @@ import com.ctgtmo.sshr.modules.ums.service.WxChatService;
 public class WxMessageTest {
   //服务注册
   @Autowired
-  private WxChatService wxChatService;
+  private MessageService wxChatService;
 
   /** 
   * @Title: pushTemplateMessage 

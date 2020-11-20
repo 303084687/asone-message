@@ -48,5 +48,5 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
-      #微信发送模板消息
-      - /wx/sendMessage/**
+      #微信、邮件http服务
+      - /message/**

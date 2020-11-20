@@ -62,7 +62,6 @@ public class WxMessageTemplateServiceImpl extends ServiceImpl<WxMessageTemplateM
   * @Description: 修改微信模板
   * @param templateId 模板主键
   * @param wxMessageTemplate
-  * @return 
   * @author 王共亮
   * @date 2020年10月29日 下午2:25:48
   */

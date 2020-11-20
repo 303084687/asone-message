@@ -22,13 +22,13 @@ import com.ctgtmo.sshr.modules.ums.model.wx.Miniprogram;
 import com.ctgtmo.sshr.modules.ums.model.wx.TemplateMessage;
 import com.ctgtmo.sshr.modules.ums.model.wx.WxMessageLog;
 import com.ctgtmo.sshr.modules.ums.model.wx.WxMessageTemplate;
-import com.ctgtmo.sshr.modules.ums.service.WxChatService;
+import com.ctgtmo.sshr.modules.ums.service.MessageService;
 import com.ctgtmo.sshr.utils.HttpRequest;
 
 import io.jsonwebtoken.lang.Collections;
 
 /**  
- * @Title: WxChatServiceImpl.java   
+ * @Title: MessageServiceImpl.java   
  * @Company: 北京易才博普奥管理顾问有限公司
  * @Package: com.ctgtmo.sshr.service.impl   
  * @Description: 消息接口推送实现类
@@ -36,7 +36,7 @@ import io.jsonwebtoken.lang.Collections;
  * @date: 2020年10月22日 上午10:58:41   
  */
 @Service("wxChatService")
-public class WxChatServiceImpl implements WxChatService {
+public class MessageServiceImpl implements MessageService {
   //获取token
   @Autowired
   protected WeChetAccessToken weChetAccessToken;

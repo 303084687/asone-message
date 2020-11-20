@@ -1,7 +1,5 @@
 package com.ctgtmo.sshr.modules.ums.controller;
 
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ctgtmo.sshr.common.api.CommonPage;
 import com.ctgtmo.sshr.common.api.CommonResult;
-import com.ctgtmo.sshr.modules.ums.model.wx.Data;
 import com.ctgtmo.sshr.modules.ums.model.wx.WxMessageTemplate;
-import com.ctgtmo.sshr.modules.ums.service.WxChatService;
 import com.ctgtmo.sshr.modules.ums.service.WxMessageTemplateService;
 
 /**
- * @Title: WxMessageMessageController.java   
+ * @Title: WxMessageTemplateController.java   
  * @Company: 北京易才博普奥管理顾问有限公司
  * @Package: com.ctgtmo.sshr.modules.ums.controller   
  * @Description: 微信推送消息模板配置信息
@@ -32,14 +28,10 @@ import com.ctgtmo.sshr.modules.ums.service.WxMessageTemplateService;
 @Controller
 @RequestMapping("/wx")
 @SuppressWarnings("all")
-public class WxMessageMessageController {
+public class WxMessageTemplateController {
 
   @Autowired
   private WxMessageTemplateService templateService;
-
-  //微信发送消息
-  @Autowired
-  private WxChatService wxChatService;
 
   /**
   * @Title: create 
@@ -105,36 +97,9 @@ public class WxMessageMessageController {
   @ResponseBody
   @RequestMapping(value = "/messageTemplate/list", method = RequestMethod.GET)
   public CommonResult<CommonPage<WxMessageTemplate>> list(@RequestParam(value = "templateId", required = false) String templateId,
-  @RequestParam(value = "templateName", required = false) String templateName, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
-  @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+  @RequestParam(value = "templateName", required = false) String templateName, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+  @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
     Page<WxMessageTemplate> templateList = templateService.list(templateId, templateName, pageSize, pageNum);
     return CommonResult.success(CommonPage.restPage(templateList));
-  }
-
-  /**
-  * @Title: sendTemplateMessage 
-  * @Description: 微信发送消息模板
-  * @return CommonResult  
-  * @author 王共亮
-  * @date 2020年11月2日 下午3:48:43
-   */
-  @ResponseBody
-  @RequestMapping(value = "/sendMessage/{templateId}/{touser}", method = RequestMethod.POST)
-  public CommonResult sendTemplateMessage(@PathVariable String templateId, @PathVariable String touser, @RequestBody Data data) {
-    return wxChatService.sendTemplateMessage(templateId, touser, data);
-  }
-
-  /**
-  * @Title: sendTemplateMessage 
-  * @Description: 微信发送消息模板-以map方式传值
-  * @param map 传值参数其中data(模板数据格式类型){"first":{"color":"#D2691E","value":"预警测试"},"keyword1":{"color":"#FF0000","value":"测试"}}
-  * @return CommonResult  
-  * @author 王共亮
-  * @date 2020年11月3日 上午10:20:03
-   */
-  @ResponseBody
-  @RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-  public CommonResult sendTemplateMessage(@RequestBody Map<String, Object> map) {
-    return wxChatService.sendTemplateMessage(map);
   }
 }

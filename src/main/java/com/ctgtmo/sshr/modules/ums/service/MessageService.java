@@ -7,14 +7,14 @@ import com.ctgtmo.sshr.common.exception.ApiException;
 import com.ctgtmo.sshr.modules.ums.model.wx.Data;
 
 /**  
- * @Title: WxChatService.java   
+ * @Title: MessageService.java   
  * @Company: 北京易才博普奥管理顾问有限公司
  * @Package: com.ctgtmo.sshr.service   
  * @Description: 消息推送接口
  * @author: 王共亮     
  * @date: 2020年10月22日 上午10:49:02   
  */
-public interface WxChatService {
+public interface MessageService {
   /**
   * @Title: sendTemplateMessage 
   * @Description: 发送微信模板消息

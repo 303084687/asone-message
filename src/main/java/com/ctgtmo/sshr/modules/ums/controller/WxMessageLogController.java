@@ -43,7 +43,7 @@ public class WxMessageLogController {
   @RequestMapping(value = "/messageLog/list", method = RequestMethod.GET)
   public CommonResult<CommonPage<WxMessageLog>> list(@RequestParam(value = "templateName", required = false) String templateName,
   @RequestParam(value = "touser", required = false) String touser, @RequestParam(value = "status", required = false) int status,
-  @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+  @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
     Page<WxMessageLog> logList = logService.list(templateName, touser, status, pageSize, pageNum);
     return CommonResult.success(CommonPage.restPage(logList));
   }
