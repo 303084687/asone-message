@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ctgtmo.sshr.common.api.CommonResult;
+import com.ctgtmo.sshr.modules.ums.dto.EmailParam;
 import com.ctgtmo.sshr.modules.ums.model.wx.Data;
 import com.ctgtmo.sshr.modules.ums.service.MessageService;
 
@@ -27,7 +28,7 @@ import com.ctgtmo.sshr.modules.ums.service.MessageService;
 @RequestMapping("/message")
 public class MessageController {
 
-  //消息service
+  //注入service
   @Autowired
   private MessageService messageService;
 
@@ -37,7 +38,7 @@ public class MessageController {
   * @return CommonResult  
   * @author 王共亮
   * @date 2020年11月2日 下午3:48:43
-   */
+  */
   @ResponseBody
   @RequestMapping(value = "/sendMessage/{templateId}/{touser}", method = RequestMethod.POST)
   public CommonResult sendTemplateMessage(@PathVariable String templateId, @PathVariable String touser, @RequestBody Data data) {
@@ -51,10 +52,24 @@ public class MessageController {
   * @return CommonResult  
   * @author 王共亮
   * @date 2020年11月3日 上午10:20:03
-   */
+  */
   @ResponseBody
   @RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
   public CommonResult sendTemplateMessage(@RequestBody Map<String, Object> map) {
     return messageService.sendTemplateMessage(map);
+  }
+
+  /**
+  * @Title: sendEmailTemplate 
+  * @Description: 发送邮件模板消息
+  * @param emailParam
+  * @return CommonResult  
+  * @author 王共亮
+  * @date 2020年11月20日 下午5:11:49
+   */
+  @ResponseBody
+  @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
+  public CommonResult sendEmailTemplate(@RequestBody EmailParam emailParam) {
+    return messageService.sendTemplateEmail(emailParam);
   }
 }

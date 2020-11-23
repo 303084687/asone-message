@@ -26,9 +26,9 @@ import com.ctgtmo.sshr.modules.ums.service.MessageService;
  * @author: 王共亮     
  * @date: 2020年10月23日 上午10:58:41   
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @SuppressWarnings("all")
+@RunWith(SpringRunner.class)
 public class WxMessageTest {
   //服务注册
   @Autowired
