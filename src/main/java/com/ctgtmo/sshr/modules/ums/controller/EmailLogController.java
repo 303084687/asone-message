@@ -22,7 +22,7 @@ import com.ctgtmo.sshr.modules.ums.service.EmailLogService;
  * @date: 2020年11月23日 下午2:01:59
  */
 @Controller
-@RequestMapping("/emaillog")
+@RequestMapping("/emailLog")
 public class EmailLogController {
 
   @Autowired
